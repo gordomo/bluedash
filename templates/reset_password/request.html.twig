@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+<section class="vh-100" style="overflow: hidden">
+    <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+                <img src="{{ asset('assets/img/draw2.svg') }}"
+                     class="img-fluid" alt="Phone image">
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+            <h1>Reset your password</h1>
+                {{ form_start(requestForm) }}
+                <div class="form-outline mb-4">
+                    {{ form_label(requestForm.email, 'Email') }}
+                    {{ form_widget(requestForm.email) }}
+                    {% if requestForm.email.vars.errors|length > 0 %}
+                        <ul class="form-errors name">
+                            {% for error in requestForm.email.vars.errors %}
+                                {{ error.message }}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div>
+                    <small>
+                        Ingrese su correo para recibir indicaciones sobre como resetear su password.
+                    </small>
+                </div><br>
+                <button class="btn btn-primary">Enviar correo</button>
+                {{ form_end(requestForm) }}
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

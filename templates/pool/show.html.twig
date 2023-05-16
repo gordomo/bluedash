@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pool{% endblock %}
+
+{% block body %}
+    <h1>Pool</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pool.id }}</td>
+            </tr>
+            <tr>
+                <th>InversionTotal</th>
+                <td>{{ pool.inversionTotal }}</td>
+            </tr>
+            <tr>
+                <th>InversionActual</th>
+                <td>{{ pool.inversionActual }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ pool.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ pool.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Icon</th>
+                <td>{{ pool.icon }}</td>
+            </tr>
+            <tr>
+                <th>FechaInicio</th>
+                <td>{{ pool.fechaInicio ? pool.fechaInicio|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ pool.status }}</td>
+            </tr>
+            <tr>
+                <th>InversionMinima</th>
+                <td>{{ pool.inversionMinima }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pool_index') }}">back to list</a>
+
+    <a href="{{ path('app_pool_edit', {'id': pool.id}) }}">edit</a>
+
+    {{ include('pool/_delete_form.html.twig') }}
+{% endblock %}

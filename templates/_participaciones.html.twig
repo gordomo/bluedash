@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-2">
+                <h6>Participaciones</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center justify-content-center mb-0 table-hover">
+                        <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pool</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Fecha</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Monto</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Completion</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for participacion in participaciones %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2">
+                                        <div>
+                                            <img src="{{ participacion.pool.icon }}" class="avatar avatar-sm me-3">
+                                        </div>
+                                        <div class="my-auto">
+                                            <h6 class="mb-0 text-sm">{{ participacion.pool.nombre }}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">{{ participacion.fecha | date('d/m/y') }}</p>
+                                </td>
+                                <td>
+                                    <span class="text-xs font-weight-bold">${{ participacion.monto }}</span>
+                                </td>
+                                <td>
+                                            <span class="text-xs font-weight-bold">
+                                                {% if participacion.status == 1 %}
+                                                    Working
+                                                {% elseif participacion.status == 2 %}
+                                                    Completed
+                                                {% elseif participacion.status == 3 %}
+                                                    Canceled
+                                                {% endif %}
+                                            </span>
+                                </td>
+                                <td class="align-middle text-center">
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

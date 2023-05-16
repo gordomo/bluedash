@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Participaciones index{% endblock %}
+
+{% block body %}
+    <h1>Participaciones index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Monto</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for participacione in participaciones %}
+            <tr>
+                <td>{{ participacione.id }}</td>
+                <td>{{ participacione.fecha ? participacione.fecha|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ participacione.monto }}</td>
+                <td>{{ participacione.status }}</td>
+                <td>
+                    <a href="{{ path('app_participaciones_show', {'id': participacione.id}) }}">show</a>
+                    <a href="{{ path('app_participaciones_edit', {'id': participacione.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_participaciones_new') }}">Create new</a>
+{% endblock %}

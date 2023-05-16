@@ -1,0 +1,13 @@
+<div class="container-fluid">
+        <div class="col-3">
+            {{ form_start(form, {'attr': {'class': 'login'}}) }}
+                <div class="row mb-3">
+                    {{ form_label(form.monto, 'Monto', {'attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                    {{ form_widget(form.monto, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="row mb-3">
+                        {{ form_widget(form.save) }}
+                </div>
+            {{ form_end(form) }}
+        </div>
+</div>

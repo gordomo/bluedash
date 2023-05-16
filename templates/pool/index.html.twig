@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pool index{% endblock %}
+
+{% block body %}
+    <h1>Pool index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>InversionTotal</th>
+                <th>InversionActual</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Icon</th>
+                <th>FechaInicio</th>
+                <th>Status</th>
+                <th>InversionMinima</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pool in pools %}
+            <tr>
+                <td>{{ pool.id }}</td>
+                <td>{{ pool.inversionTotal }}</td>
+                <td>{{ pool.inversionActual }}</td>
+                <td>{{ pool.nombre }}</td>
+                <td>{{ pool.descripcion }}</td>
+                <td>{{ pool.icon }}</td>
+                <td>{{ pool.fechaInicio ? pool.fechaInicio|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ pool.status }}</td>
+                <td>{{ pool.inversionMinima }}</td>
+                <td>
+                    <a href="{{ path('app_pool_show', {'id': pool.id}) }}">show</a>
+                    <a href="{{ path('app_pool_edit', {'id': pool.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pool_new') }}">Create new</a>
+{% endblock %}

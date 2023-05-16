@@ -1,0 +1,15 @@
+<div style="width: 100%;padding-right: 1.5rem; padding-left: 1.5rem; margin-right: auto; margin-left: auto;">
+    <img src="{{ absolute_url(asset('assets/img/logos/logo/logo_small.png')) }}" alt="bluealy">
+    <h1>Hola! por favor, confirme su email</h1>
+
+    <p>
+        Haga click en el siguiente link para confirmar su casilla de email: <br><br>
+        <a href="{{ signedUrl }}">Confirmar mi email</a>.
+        El link expira en: {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+    </p>
+
+    <p>
+        Gracias!!!
+    </p>
+</div>
+
